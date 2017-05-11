@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8"/>
+    <title>Teksti lihtsustamine</title>
+    <!-- Bootstrap  CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Lehe põhilised stiili kirjeldused -->
+    <link rel="stylesheet" href="css/site.css"/>
+
+    <!-- jQuery JavaScript-->
+    <script rel="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Progressbar.js JavaScript -->
+    <script rel="javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Lehe põhiline skript-->
+    <script rel="javascript" src="js/site.js"></script>
+</head>
+
+<body>
+<header style="text-align: center">
+    <h1>Teksti lihtsustamine</h1>
+</header>
+<div class="container">
+    <div class="row">
+        <form id="simplify_form" class="text-wrapper" method="post" action="simplify">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="entered">Sisestage tekst, mida soovite lihtsustada: </label>
+                    <textarea class="form-control" rows="9" id="entered" name="input"
+                              th:text="${original != null} ? ${original}"></textarea>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="range-slider">
+                    <label for="threshold">Sageduse lävend</label>
+                    <span id="help-icon" class="glyphicon glyphicon-question-sign" aria-hidden="true"
+                          data-toggle="modal" data-target="#help"></span>
+                    <input id="threshold" name="threshold" class="range-slider__range" type="range" value="150" min="10"
+                           max="1000"/>
+                    <span class="range-slider__value">200</span>
+                </div>
+                <button id="submit" class="btn btn-primary pull-right" type="submit"> Lihtsusta</button>
+            </div>
+        </form>
+        <div class="text-wrapper">
+
+            <div id="container"></div>
+            <div class="col-md-12">
+                <label for="result">Tulemus: </label>
+                <p class="text-area " id="result" th:text="${result != null} ? ${result}"></p>
+            </div>
+
+            <div class="col-md-12 help">
+                <div>
+                    <span class="replaced_single">Roheline</span>
+                    <span> tähendab, et sõnale leiti asendus.</span>
+                </div>
+                <div>
+                    <span id="display-0" onclick="myFunction(0)" class="dropbtn">Sinine</span>
+                    <div id="myDropdown-0" class="dropdown-content">
+                        <span onclick="changeDisplayText(0,'Sinine')">Sinine</span>
+                        <span onclick="changeDisplayText(0,'Sõna 1')">Sõna 1</span>
+                        <span onclick="changeDisplayText(0,'Sõna 2')">Sõna 2</span>
+                    </div>
+                    <span> tähendab, et sõnale leiti mitu sobilikku asendust ja nende vahel on võimalik valida.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="help" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content  panel panel-primary">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="panel-title">Sageduse lävend</h4>
+                </div>
+                <div class="modal-body font-size-lg justify">
+                    <p>Lävendi abil on võimalik muuta lihtsustatavate sõnade hulka. Lävend aitab rakendusel valida,
+                        milliseid sõnu tuleks algtekstis lihtsustada.
+                        Suurema lävendi puhul lihtsustatakse rohkem sõnu, kuid liiga suure lävendi puhul lihtsustatake
+                        ka eesti keele jaoks sagedasti esinevaid sõnu.
+                        Lävendi suurendamine ei pruugi parandada lihtsustamise üldist kvaliteeti. Lävendi 150 puhul
+                        üritatakse lihtsustada 77% tuntud sõnadest,
+                        lävendi 1000 puhul aga 95%.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Sulge</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
