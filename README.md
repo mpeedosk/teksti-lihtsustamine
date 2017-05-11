@@ -1,5 +1,5 @@
 # Eestikeelse teksti lihtsustamise veebirakendus
-Rakenduse kasutamiseks on vaja sagedusloendit, põhisõnavara sõnastiku märksõnaloendit ja võõrsõnade leksikoni märksõnaloendit kui ka tähendustesõnastikku.
+Rakenduse kasutamiseks on vaja sagedusloendit, põhisõnavara sõnastiku märksõnaloendit ja võõrsõnade leksikoni märksõnaloendit kui ka tähendussõnastikku.
 
 Töötlemata kujul on vaja loendid lisada "python" kasuta nimedega:
  * `freq_list_raw.txt` - sagedusloendi puhul;
