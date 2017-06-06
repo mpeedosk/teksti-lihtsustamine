@@ -14,3 +14,18 @@ Töötlemata kujul on vaja loendid lisada "python" kasuta nimedega:
  
  Lisaks on "python"-i kausta vaja lisada EstNLTK <i>word2vec</i>'i mudel nimega `lemmas.cbow.s200.w2v.bin`, mis on kättesaadav aadressil (EstNLTK word2vec-models)[https://github.com/estnltk/word2vec-models/blob/master/README.md] 
  
+Projekti struktuur
+ * python
+   * dictionaries.py - erinevate loendite laadimine
+   * preprocessing.py - erinevate loendite eeltöötlus
+   * simplify.py - teksti lihtsustamine programm
+ * src/main
+   * java
+      * main - tagarakendus, päringute töötlemine
+      * resources/
+          * public
+              * css - eesrakendus, CSS kujundus 
+              * js - eesrakendus, JavaScript
+          * templates 
+              * site.html - eesrakendus, HTML
+          
